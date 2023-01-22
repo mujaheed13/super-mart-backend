@@ -18,8 +18,7 @@ app.use(json());
 //routes
 app.use("/user", userRouter);
 app.use("/products", productRouter);
-app.use(auth);
-app.use("/cartproducts", cartProductsRouter);
+
 
 app.get("/", (req, res)=>{
     res.json("Super Mart");
@@ -28,6 +27,9 @@ app.get("/", (req, res)=>{
 app.get("*", (req, res)=>{
     res.json("Invalid end point");
 })
+
+app.use(auth);
+app.use("/cartproducts", cartProductsRouter);
 
 app.listen(process.env.port, async()=>{
     console.log(`Server is running at http://localhost:${process.env.port}`);
